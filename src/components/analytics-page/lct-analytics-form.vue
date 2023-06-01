@@ -85,7 +85,7 @@
           <label for="selectBookingClass">Класс бронирования:</label>
           <a-select
             v-model:value="formState.selectBookingClass"
-            mode="multiple"
+            :mode="mode"
             :show-arrow="false"
             @change="handleSelectChange"
             class="ant-select"
@@ -152,6 +152,10 @@ export default defineComponent({
     pickerValue: {
       type: String,
       default: "2018-01-01",
+    },
+    mode: {
+      type: String,
+      default: "multiple",
     },
   },
   methods: {

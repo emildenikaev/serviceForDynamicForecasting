@@ -95,7 +95,7 @@
           2019 год.
         </p>
         <router-link :to="{ name: 'seasonalityDemand' }">
-          <a-button type="primary" class="btn">«Сезоны»</a-button>
+          <a-button type="primary" class="btn">Сезоны</a-button>
         </router-link>
       </div>
     </div>
