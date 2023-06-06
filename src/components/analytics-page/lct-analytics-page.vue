@@ -345,5 +345,10 @@ p {
     margin-left: 10px;
     margin-right: 10px;
   }
+
+  .ul-wrap__list {
+    display: flex;
+    flex-direction: column;
+  }
 }
 </style>
