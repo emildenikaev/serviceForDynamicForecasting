@@ -1,7 +1,11 @@
 <template>
   <h1>Сезонность бронирования</h1>
   <div class="lct-seasonality-demand">
-    <lct-analytics-form :showFlightDate="false" :link="`seasonality`" />
+    <lct-analytics-form
+      :showFlightDate="false"
+      :link="`seasonality`"
+      :mode="`none`"
+    />
     <apexchart
       v-if="this.GRAPH"
       type="bar"

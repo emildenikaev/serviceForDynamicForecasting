@@ -29,50 +29,46 @@
         </div>
       </div>
     </section>
-    <section>
+    <section class="lct-main-page__predict">
       <div class="list-wrapper">
         <h1>Решает следующие задачи:</h1>
-        <ul>
-          <div>
-            <li>
-              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
-              <div>
+        <ul class="list-wrapper__task">
+          <li>
+            <div>
+              <div class="img-wrap">
+                <!-- <img src="../../assets/main-page/one.png" alt="Авиарейсы" /> -->
+                <div class="icon-numbers">1</div>
                 <p>
                   Определение динамики бронирований рейса в разрезе классов
                   бронирования по вылетевшим рейсам;
                 </p>
               </div>
-            </li>
-            <li>
-              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
-              <div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="img-wrap">
+                <!-- <img src="../../assets/main-page/two.png" alt="Авиарейсы" /> -->
+                <div class="icon-numbers">2</div>
                 <p>
                   Определение сезонности спроса по классам бронирования, по
                   вылетевшим рейсам;
                 </p>
               </div>
-            </li>
-          </div>
-          <div>
-            <li>
-              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
-              <div>
-                <p>
-                  Определение профилей спроса в разрезе классов бронирования, по
-                  вылетевшим рейсам;
-                </p>
-              </div>
-            </li>
-            <li>
-              <img src="../../assets/main-page/iconCheck.png" alt="Авиарейсы" />
-              <div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="img-wrap">
+                <!-- <img src="../../assets/main-page/three.png" alt="Авиарейсы" /> -->
+                <div class="icon-numbers">3</div>
                 <p>
                   Прогнозирование спроса в разрезе классов бронирования для
                   продаваемых рейсов.
                 </p>
               </div>
-            </li>
-          </div>
+            </div>
+          </li>
         </ul>
       </div>
     </section>
@@ -132,9 +128,9 @@
         <ul>
           <li>
             <div>
-              <div class="img-wrap">
+              <div class="img-wrap img-wrap-icons">
                 <img
-                  src="../../assets/main-page/iconCheck.png"
+                  src="../../assets/main-page/tochnost.png"
                   alt="Авиарейсы"
                 />
                 <h4>Точность прогноза</h4>
@@ -148,11 +144,8 @@
           </li>
           <li>
             <div>
-              <div class="img-wrap">
-                <img
-                  src="../../assets/main-page/iconCheck.png"
-                  alt="Авиарейсы"
-                />
+              <div class="img-wrap img-wrap-icons">
+                <img src="../../assets/main-page/zatrat.png" alt="Авиарейсы" />
                 <h4>Снижение затрат</h4>
               </div>
               <p>
@@ -163,11 +156,8 @@
           </li>
           <li>
             <div>
-              <div class="img-wrap">
-                <img
-                  src="../../assets/main-page/iconCheck.png"
-                  alt="Авиарейсы"
-                />
+              <div class="img-wrap img-wrap-icons">
+                <img src="../../assets/main-page/adapt.png" alt="Авиарейсы" />
                 <h4>Адаптируемость</h4>
               </div>
               <p>
@@ -207,7 +197,7 @@ export default {
 
 section {
   margin-top: 50px;
-  margin-bottom: 130px;
+  margin-bottom: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -260,7 +250,7 @@ section {
     margin: -210px 100px 50px 100px;
 
     &-header {
-      font-size: 22px;
+      font-size: 18px;
       text-align: left;
       color: #02458d;
       line-height: 1;
@@ -270,7 +260,7 @@ section {
 }
 
 section.section-with-icons {
-  margin-bottom: 200px;
+  margin-bottom: 150px;
 }
 
 h1 {
@@ -292,6 +282,16 @@ p {
   margin-bottom: 6px 0;
 }
 
+.icon-numbers {
+  font-size: 40px;
+  padding: 0px 20px;
+  color: white;
+  background: #02458d;
+  margin-left: 0px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
+
 .list-wrapper {
   ul {
     margin-top: 20px;
@@ -300,6 +300,10 @@ p {
     list-style: none;
     justify-content: space-between;
     align-items: flex-start;
+  }
+
+  &__task {
+    align-items: center;
   }
 
   li {
@@ -324,19 +328,31 @@ p {
       margin-right: 20px;
     }
     .img-wrap {
-      display: flex;
-      align-items: center;
       margin-bottom: 5px;
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
 
       h4 {
         padding-left: 0;
         margin-bottom: 0px;
       }
 
-      img {
-        width: 30px;
-        height: 30px;
-        margin-right: 5px;
+      p {
+        margin-bottom: 0;
+      }
+
+      &-icons {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+
+        img {
+          width: 80px;
+          height: 80px;
+          margin-left: 0px;
+          margin-bottom: 15px;
+        }
       }
     }
   }
@@ -351,7 +367,7 @@ section.lct-last {
 .lct-main-page {
   &__predict {
     &-info {
-      max-width: 470px;
+      max-width: 550px;
       text-align: left;
     }
   }
