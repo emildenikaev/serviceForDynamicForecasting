@@ -98,7 +98,11 @@
             >
           </a-select>
         </a-form-item>
-        <a-form-item name="bookingPeriod" class="form-item">
+        <a-form-item
+          name="bookingPeriod"
+          class="form-item"
+          v-if="showFlightPeriod"
+        >
           <label for="bookingPeriod">Количество месяцев от даты полета: </label>
           <a-input-number
             v-model:value="formData.bookingPeriod"
@@ -106,6 +110,53 @@
             :max="12"
             @change="updateFilters"
             class="ant-picker ant-select"
+          />
+        </a-form-item>
+        <a-form-item
+          name="flightStart"
+          v-bind="config"
+          v-if="showFlightStart"
+          class="form-item"
+        >
+          <label for="flightStart">Начальная дата:</label>
+          <a-date-picker
+            v-model:value="formState.flightStart"
+            value-format="YYYY-MM-DD"
+            :defaultPickerValue="pickerValue"
+            :disabled-date="
+              (date) => {
+                const year = date.year();
+                return year < toFlightDate || year > fromFlightDate;
+              }
+            "
+            @change="updateFilters"
+            placeholder=""
+            class="ant-select"
+          />
+        </a-form-item>
+        <a-form-item
+          name="flightEnd"
+          v-bind="config"
+          v-if="showFlightEnd"
+          class="form-item"
+        >
+          <label for="flightEnd">Конечная дата:</label>
+          <a-date-picker
+            v-model:value="formState.flightEnd"
+            value-format="YYYY-MM-DD"
+            :defaultPickerValue="formState.flightStart"
+            :disabled-date="
+              (date) => {
+                const start = formState.flightStart;
+                return (
+                  start &&
+                  (date.isBefore(start) || date.isAfter(toFlightDatePeriod))
+                );
+              }
+            "
+            @change="updateFilters"
+            placeholder=""
+            class="ant-select"
           />
         </a-form-item>
       </a-form>
@@ -149,6 +200,10 @@ export default defineComponent({
       type: Number,
       default: 2019,
     },
+    toFlightDatePeriod: {
+      type: String,
+      default: "2019-12-31",
+    },
     pickerValue: {
       type: String,
       default: "2018-01-01",
@@ -156,6 +211,18 @@ export default defineComponent({
     mode: {
       type: String,
       default: "multiple",
+    },
+    showFlightPeriod: {
+      type: Boolean,
+      default: true,
+    },
+    showFlightStart: {
+      type: Boolean,
+      default: false,
+    },
+    showFlightEnd: {
+      type: Boolean,
+      default: false,
     },
   },
   methods: {
@@ -190,6 +257,14 @@ export default defineComponent({
 
       if (this.formState.flightDate) {
         this.query.flight_date = this.formState.flightDate;
+      }
+
+      if (this.formState.flightEnd) {
+        this.query.booking_end = this.formState.flightEnd;
+      }
+
+      if (this.formState.flightStart) {
+        this.query.booking_start = this.formState.flightStart;
       }
 
       if (this.formState.selectBookingClass) {

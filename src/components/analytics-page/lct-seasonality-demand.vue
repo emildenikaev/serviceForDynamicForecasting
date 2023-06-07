@@ -3,8 +3,11 @@
   <div class="lct-seasonality-demand">
     <lct-analytics-form
       :showFlightDate="false"
+      :showFlightPeriod="false"
       :link="`seasonality`"
       :mode="`none`"
+      :showFlightStart="true"
+      :showFlightEnd="true"
     />
     <apexchart
       v-if="this.GRAPH"
