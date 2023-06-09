@@ -124,6 +124,7 @@ export default createStore({
     directions: [],
     flightNumbers: [],
     bookingClasses: [],
+    scenarios: [],
   },
   mutations,
   actions,

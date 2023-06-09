@@ -51,6 +51,28 @@
           </a-select>
         </a-form-item>
         <a-form-item
+          name="selectScenarios"
+          v-if="showScenarios"
+          :rules="[
+            {
+              required: true,
+              message: 'Пожалуйста, выберите сценарий',
+            },
+          ]"
+          class="form-item"
+        >
+          <label for="selectScenarios">Сценарий:</label>
+          <a-select
+            v-model:value="formState.selectScenarios"
+            :show-arrow="false"
+            @change="updateFilters"
+          >
+            <a-select-option v-for="item in SCENARIOS.scenarios" :key="item">
+              {{ item }}</a-select-option
+            >
+          </a-select>
+        </a-form-item>
+        <a-form-item
           name="flightDate"
           v-bind="config"
           v-if="showFlightDate"
@@ -224,10 +246,15 @@ export default defineComponent({
       type: Boolean,
       default: false,
     },
+    showScenarios: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     ...mapActions([
       "GET_DIRECTIONS_FROM_API",
+      "GET_SCENARIOS_FROM_API",
       "GET_FLIGHT_NUMBERS_FROM_API",
       "GET_BOOKING_CLASSES_FROM_API",
       "GET_GRAPH_FROM_API",
@@ -253,6 +280,10 @@ export default defineComponent({
         if (!this.FLIGHT_NUMBERS.length) {
           this.GET_FLIGHT_NUMBERS_FROM_API(this.query.direction);
         }
+      }
+
+      if (this.formState.selectScenarios) {
+        this.query.scenario = this.formState.selectScenarios;
       }
 
       if (this.formState.flightDate) {
@@ -328,12 +359,22 @@ export default defineComponent({
     };
   },
   computed: {
-    ...mapGetters(["DIRECTIONS", "FLIGHT_NUMBERS", "BOOKING_CLASSES", "GRAPH"]),
+    ...mapGetters([
+      "DIRECTIONS",
+      "FLIGHT_NUMBERS",
+      "BOOKING_CLASSES",
+      "GRAPH",
+      "SCENARIOS",
+    ]),
   },
 
   mounted() {
     if (!this.DIRECTIONS.length) {
       this.GET_DIRECTIONS_FROM_API();
+    }
+
+    if (!this.SCENARIOS.length) {
+      this.GET_SCENARIOS_FROM_API();
     }
 
     if (!this.BOOKING_CLASSES.length) {

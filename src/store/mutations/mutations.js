@@ -5,6 +5,9 @@ export default {
   SET_DIRECTIONS_TO_STATE: (state, directions) => {
     state.directions = directions;
   },
+  SET_SCENARIOS_TO_STATE: (state, scenarios) => {
+    state.scenarios = scenarios;
+  },
   SET_FLIGHT_NUMBERS_TO_STATE: (state, flightNumbers) => {
     state.flightNumbers = flightNumbers;
   },

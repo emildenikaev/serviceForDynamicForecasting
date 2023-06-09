@@ -11,4 +11,7 @@ export default {
   BOOKING_CLASSES(state) {
     return state.bookingClasses;
   },
+  SCENARIOS(state) {
+    return state.scenarios;
+  },
 };
