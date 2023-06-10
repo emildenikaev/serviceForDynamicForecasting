@@ -97,12 +97,6 @@
         <a-form-item
           v-if="showClass"
           name="selectBookingClass"
-          :rules="[
-            {
-              required: true,
-              message: 'Пожалуйста, выберите класс бронирования!',
-            },
-          ]"
           class="form-item"
         >
           <label for="selectBookingClass">Класс бронирования:</label>
@@ -120,6 +114,13 @@
               {{ item }}</a-select-option
             >
           </a-select>
+          <a-checkbox
+            v-if="showCheckBoxClass"
+            v-model:checked="selectAllClasses"
+            @change="handleCheckboxChange"
+            class="ant-select"
+            >Все классы</a-checkbox
+          >
         </a-form-item>
         <a-form-item
           name="bookingPeriod"
@@ -205,6 +206,7 @@ export default defineComponent({
       formData: {
         bookingPeriod: 1,
       },
+      selectAllClasses: false,
     };
   },
   props: {
@@ -255,6 +257,10 @@ export default defineComponent({
       type: Boolean,
       default: true,
     },
+    showCheckBoxClass: {
+      type: Boolean,
+      default: false,
+    },
   },
   methods: {
     ...mapActions([
@@ -270,7 +276,17 @@ export default defineComponent({
         this.GET_GRAPH_FROM_API(this.query);
       }
     },
+    handleCheckboxChange(e) {
+      this.selectAllClasses = true;
+      if (e.target.checked) {
+        this.formState.selectBookingClass = [];
+        this.query.booking_class = [];
+      }
+    },
     handleSelectChange(value) {
+      if (value) {
+        this.selectAllClasses = false;
+      }
       if (value.length > 3) {
         this.formState.selectBookingClass.splice(0, 1);
         this.formState.selectBookingClass = [...value];

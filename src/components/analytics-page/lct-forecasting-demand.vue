@@ -6,6 +6,7 @@
       :toFlightDate="2020"
       :fromFlightDate="2020"
       :pickerValue="`2020-01-01`"
+      :showCheckBoxClass="true"
     />
     <apexchart
       v-if="this.GRAPH"
