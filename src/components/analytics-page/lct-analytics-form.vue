@@ -95,6 +95,7 @@
           />
         </a-form-item>
         <a-form-item
+          v-if="showClass"
           name="selectBookingClass"
           :rules="[
             {
@@ -249,6 +250,10 @@ export default defineComponent({
     showScenarios: {
       type: Boolean,
       default: false,
+    },
+    showClass: {
+      type: Boolean,
+      default: true,
     },
   },
   methods: {

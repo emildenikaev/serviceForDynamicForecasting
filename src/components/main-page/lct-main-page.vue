@@ -36,7 +36,6 @@
           <li>
             <div>
               <div class="img-wrap">
-                <!-- <img src="../../assets/main-page/one.png" alt="Авиарейсы" /> -->
                 <div class="icon-numbers">1</div>
                 <p>
                   Определение динамики бронирований рейса в разрезе классов
@@ -48,7 +47,6 @@
           <li>
             <div>
               <div class="img-wrap">
-                <!-- <img src="../../assets/main-page/two.png" alt="Авиарейсы" /> -->
                 <div class="icon-numbers">2</div>
                 <p>
                   Определение сезонности спроса по классам бронирования, по
@@ -60,8 +58,18 @@
           <li>
             <div>
               <div class="img-wrap">
-                <!-- <img src="../../assets/main-page/three.png" alt="Авиарейсы" /> -->
                 <div class="icon-numbers">3</div>
+                <p>
+                  Определение профилей спроса в разрезе классов бронирования, по
+                  вылетевшим рейсам.
+                </p>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div>
+              <div class="img-wrap">
+                <div class="icon-numbers">4</div>
                 <p>
                   Прогнозирование спроса в разрезе классов бронирования для
                   продаваемых рейсов.
@@ -309,7 +317,7 @@ p {
   li {
     margin: 30px 0;
     display: flex;
-    margin-right: 80px;
+    margin-right: 50px;
     font-size: 18px;
     align-items: center;
 
