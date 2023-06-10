@@ -2,7 +2,7 @@
   <h1>Сценарный прогноз на 2020 год</h1>
   <div class="lct-determination-demand">
     <lct-analytics-form
-      :link="`demand-profile`"
+      :link="`scenario-forecasts`"
       :toFlightDate="2020"
       :fromFlightDate="2020"
       :pickerValue="`2020-01-01`"

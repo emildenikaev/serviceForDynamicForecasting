@@ -65,6 +65,7 @@
           <a-select
             v-model:value="formState.selectScenarios"
             :show-arrow="false"
+            :mode="mode"
             @change="updateFilters"
           >
             <a-select-option v-for="item in SCENARIOS.scenarios" :key="item">
